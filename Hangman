@@ -1,0 +1,119 @@
+#print list
+PRINTS = [
+    '''
+    ___________
+    |         |
+    |
+    |
+    |
+    |
+    |
+    ===========
+    ''',
+
+    '''
+    ___________
+    |         |
+    |         0
+    |
+    |
+    |
+    |
+    ===========
+    ''',
+
+    '''
+    ___________
+    |         |
+    |         0
+    |         |
+    |
+    |
+    |
+    ===========
+    ''',
+
+    '''
+    ___________
+    |         |
+    |         0
+    |        /|
+    |
+    |
+    |
+    ===========
+    ''',
+
+    '''
+    ___________
+    |         |
+    |         0
+    |        /|\\
+    |
+    |
+    |
+    ===========
+    ''',
+
+    '''
+    ___________
+    |         |
+    |         0
+    |        /|\\
+    |        /
+    |
+    |
+    ===========
+    ''',
+
+    '''
+    ___________
+    |         |
+    |         0
+    |        /|\\
+    |        / \\
+    |
+    |
+    ===========
+    '''
+]
+lives=6
+word = input("What is the guessing word? ")
+word=word.lower()
+guess = "a"
+print(PRINTS[0])
+wordList=[]
+for i in word:
+
+    wordList.append("_")
+print(" ".join(wordList))
+LivesPrinter = {6:0, 5:1, 4:2, 3:3, 2:4, 1:5, 0:6}
+while True:
+    guess=input("Guess a letter: ").lower()
+    while True:
+        if guess.isalpha() and len(guess)==1:
+            break
+        else:
+            guess=input("Incorrect Input. Guess a letter: ").lower()
+    if guess in word:
+        for i in range(0,len(word)):
+            if word[i]==guess:
+                print("Correct!")
+                wordList[i]=guess
+    else:
+        lives-=1
+        print("Wrong!")
+    print("You have " + str(lives) + " live(s) left.")
+    if not "_" in wordList:
+        print("The word was " + word + ". You won!")
+        break
+    if lives==0:
+        print("You Lost!")
+        break
+    print(PRINTS[LivesPrinter[lives]])
+    print(" ".join(wordList))
+
+
+    
+    
+
