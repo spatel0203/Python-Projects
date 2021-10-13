@@ -1,0 +1,24 @@
+import time
+
+print('Press ENTER to begin. Afterward, press ENTER to "click" the stopwatch. Press Ctrl-C to quit.')
+try:
+    input()
+except KeyboardInterrupt:
+    raise Exception("Stopwatch Never Started!")
+print('Started.')
+startTime = time.time()
+lastTime = startTime
+lapNum = 1
+try:
+    while True:
+        input()
+        lapTime=round(time.time()-lastTime,2)
+        totalTime=round(time.time()-startTime,2)
+        print("Lap " + str(lapNum) + ":")
+        print("\t" + "Lap Time: " + str(lapTime))
+        print("\t" + "Total Time: " + str(totalTime))
+        lapNum+=1
+        lastTime=time.time()
+except KeyboardInterrupt:
+    print("Done")
+print("Total Time: " + str(round(time.time()-startTime,2)))
